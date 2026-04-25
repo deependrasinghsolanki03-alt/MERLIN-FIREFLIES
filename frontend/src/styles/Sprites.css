@@ -1,0 +1,166 @@
+/* Pixel Art Sprites — CSS box-shadow technique */
+/* Each sprite is 16x16 grid, scaled up via transform */
+
+.sprite-container {
+  position: relative;
+  display: inline-block;
+}
+
+.sprite {
+  width: 6px;
+  height: 6px;
+  position: relative;
+}
+
+.sprite-merlin-neutral,
+.sprite-merlin-happy,
+.sprite-merlin-angry {
+  width: 6px; height: 6px;
+  transform: scale(3);
+  transform-origin: top left;
+  margin-right: 220px;
+  margin-bottom: 230px;
+}
+
+.sprite-player-normal,
+.sprite-player-worried {
+  width: 6px; height: 6px;
+  transform: scale(4);
+  transform-origin: top left;
+  margin-right: 240px;
+  margin-bottom: 280px;
+}
+
+/* ── Merlin Neutral ─── */
+.sprite-merlin-neutral {
+  color: transparent;
+  box-shadow:
+    /* Hat */
+    42px 0 0 #4a3aa0, 48px 0 0 #4a3aa0,
+    36px 6px 0 #4a3aa0, 42px 6px 0 #5b4abf, 48px 6px 0 #5b4abf, 54px 6px 0 #4a3aa0,
+    30px 12px 0 #4a3aa0, 36px 12px 0 #5b4abf, 42px 12px 0 #5b4abf, 48px 12px 0 #ffd700, 54px 12px 0 #5b4abf, 60px 12px 0 #4a3aa0,
+    30px 18px 0 #4a3aa0, 36px 18px 0 #5b4abf, 42px 18px 0 #5b4abf, 48px 18px 0 #5b4abf, 54px 18px 0 #5b4abf, 60px 18px 0 #4a3aa0,
+    24px 24px 0 #4a3aa0, 30px 24px 0 #4a3aa0, 36px 24px 0 #4a3aa0, 42px 24px 0 #4a3aa0, 48px 24px 0 #4a3aa0, 54px 24px 0 #4a3aa0, 60px 24px 0 #4a3aa0, 66px 24px 0 #4a3aa0,
+    /* Face */
+    36px 30px 0 #f5c5a3, 42px 30px 0 #f5c5a3, 48px 30px 0 #f5c5a3, 54px 30px 0 #f5c5a3,
+    36px 36px 0 #222, 42px 36px 0 #f5c5a3, 48px 36px 0 #f5c5a3, 54px 36px 0 #222,
+    36px 42px 0 #f5c5a3, 42px 42px 0 #f5c5a3, 48px 42px 0 #f5c5a3, 54px 42px 0 #f5c5a3,
+    /* Beard */
+    30px 48px 0 #ddd, 36px 48px 0 #ddd, 42px 48px 0 #f5c5a3, 48px 48px 0 #f5c5a3, 54px 48px 0 #ddd, 60px 48px 0 #ddd,
+    30px 54px 0 #ccc, 36px 54px 0 #ddd, 42px 54px 0 #ddd, 48px 54px 0 #ddd, 54px 54px 0 #ddd, 60px 54px 0 #ccc,
+    36px 60px 0 #ccc, 42px 60px 0 #ddd, 48px 60px 0 #ddd, 54px 60px 0 #ccc,
+    42px 66px 0 #ccc, 48px 66px 0 #ccc,
+    /* Robe */
+    24px 54px 0 #2c3e80, 66px 54px 0 #2c3e80,
+    18px 60px 0 #2c3e80, 24px 60px 0 #2c3e80, 30px 60px 0 #2c3e80, 60px 60px 0 #2c3e80, 66px 60px 0 #2c3e80, 72px 60px 0 #2c3e80,
+    18px 66px 0 #2c3e80, 24px 66px 0 #ffd700, 30px 66px 0 #2c3e80, 36px 66px 0 #2c3e80, 54px 66px 0 #2c3e80, 60px 66px 0 #2c3e80, 66px 66px 0 #ffd700, 72px 66px 0 #2c3e80,
+    18px 72px 0 #2c3e80, 24px 72px 0 #2c3e80, 30px 72px 0 #2c3e80, 36px 72px 0 #2c3e80, 42px 72px 0 #2c3e80, 48px 72px 0 #2c3e80, 54px 72px 0 #2c3e80, 60px 72px 0 #2c3e80, 66px 72px 0 #2c3e80, 72px 72px 0 #2c3e80,
+    /* Staff */
+    12px 30px 0 #8B4513, 12px 36px 0 #8B4513, 12px 42px 0 #8B4513, 12px 48px 0 #8B4513, 12px 54px 0 #8B4513, 12px 60px 0 #8B4513, 12px 66px 0 #8B4513, 12px 72px 0 #8B4513,
+    12px 24px 0 #00cc6a, 6px 24px 0 #00ff80, 18px 24px 0 #00ff80;
+}
+
+/* ── Merlin Happy ─── same but with smile mouth */
+.sprite-merlin-happy {
+  color: transparent;
+  box-shadow:
+    42px 0 0 #4a3aa0, 48px 0 0 #4a3aa0,
+    36px 6px 0 #4a3aa0, 42px 6px 0 #5b4abf, 48px 6px 0 #5b4abf, 54px 6px 0 #4a3aa0,
+    30px 12px 0 #4a3aa0, 36px 12px 0 #5b4abf, 42px 12px 0 #5b4abf, 48px 12px 0 #ffd700, 54px 12px 0 #5b4abf, 60px 12px 0 #4a3aa0,
+    30px 18px 0 #4a3aa0, 36px 18px 0 #5b4abf, 42px 18px 0 #5b4abf, 48px 18px 0 #5b4abf, 54px 18px 0 #5b4abf, 60px 18px 0 #4a3aa0,
+    24px 24px 0 #4a3aa0, 30px 24px 0 #4a3aa0, 36px 24px 0 #4a3aa0, 42px 24px 0 #4a3aa0, 48px 24px 0 #4a3aa0, 54px 24px 0 #4a3aa0, 60px 24px 0 #4a3aa0, 66px 24px 0 #4a3aa0,
+    36px 30px 0 #f5c5a3, 42px 30px 0 #f5c5a3, 48px 30px 0 #f5c5a3, 54px 30px 0 #f5c5a3,
+    36px 36px 0 #222, 42px 36px 0 #f5c5a3, 48px 36px 0 #f5c5a3, 54px 36px 0 #222,
+    36px 42px 0 #f5c5a3, 42px 42px 0 #00cc6a, 48px 42px 0 #00cc6a, 54px 42px 0 #f5c5a3,
+    30px 48px 0 #ddd, 36px 48px 0 #ddd, 42px 48px 0 #f5c5a3, 48px 48px 0 #f5c5a3, 54px 48px 0 #ddd, 60px 48px 0 #ddd,
+    30px 54px 0 #ccc, 36px 54px 0 #ddd, 42px 54px 0 #ddd, 48px 54px 0 #ddd, 54px 54px 0 #ddd, 60px 54px 0 #ccc,
+    36px 60px 0 #ccc, 42px 60px 0 #ddd, 48px 60px 0 #ddd, 54px 60px 0 #ccc,
+    42px 66px 0 #ccc, 48px 66px 0 #ccc,
+    24px 54px 0 #2c3e80, 66px 54px 0 #2c3e80,
+    18px 60px 0 #2c3e80, 24px 60px 0 #2c3e80, 30px 60px 0 #2c3e80, 60px 60px 0 #2c3e80, 66px 60px 0 #2c3e80, 72px 60px 0 #2c3e80,
+    18px 66px 0 #2c3e80, 24px 66px 0 #ffd700, 30px 66px 0 #2c3e80, 36px 66px 0 #2c3e80, 54px 66px 0 #2c3e80, 60px 66px 0 #2c3e80, 66px 66px 0 #ffd700, 72px 66px 0 #2c3e80,
+    18px 72px 0 #2c3e80, 24px 72px 0 #2c3e80, 30px 72px 0 #2c3e80, 36px 72px 0 #2c3e80, 42px 72px 0 #2c3e80, 48px 72px 0 #2c3e80, 54px 72px 0 #2c3e80, 60px 72px 0 #2c3e80, 66px 72px 0 #2c3e80, 72px 72px 0 #2c3e80,
+    12px 30px 0 #8B4513, 12px 36px 0 #8B4513, 12px 42px 0 #8B4513, 12px 48px 0 #8B4513, 12px 54px 0 #8B4513, 12px 60px 0 #8B4513, 12px 66px 0 #8B4513, 12px 72px 0 #8B4513,
+    12px 24px 0 #00cc6a, 6px 24px 0 #00ff80, 18px 24px 0 #00ff80;
+}
+
+/* ── Merlin Angry ─── red eyes, frown */
+.sprite-merlin-angry {
+  color: transparent;
+  box-shadow:
+    42px 0 0 #4a3aa0, 48px 0 0 #4a3aa0,
+    36px 6px 0 #4a3aa0, 42px 6px 0 #5b4abf, 48px 6px 0 #5b4abf, 54px 6px 0 #4a3aa0,
+    30px 12px 0 #4a3aa0, 36px 12px 0 #5b4abf, 42px 12px 0 #5b4abf, 48px 12px 0 #ffd700, 54px 12px 0 #5b4abf, 60px 12px 0 #4a3aa0,
+    30px 18px 0 #4a3aa0, 36px 18px 0 #5b4abf, 42px 18px 0 #5b4abf, 48px 18px 0 #5b4abf, 54px 18px 0 #5b4abf, 60px 18px 0 #4a3aa0,
+    24px 24px 0 #4a3aa0, 30px 24px 0 #4a3aa0, 36px 24px 0 #4a3aa0, 42px 24px 0 #4a3aa0, 48px 24px 0 #4a3aa0, 54px 24px 0 #4a3aa0, 60px 24px 0 #4a3aa0, 66px 24px 0 #4a3aa0,
+    36px 30px 0 #f5c5a3, 42px 30px 0 #f5c5a3, 48px 30px 0 #f5c5a3, 54px 30px 0 #f5c5a3,
+    36px 36px 0 #ff4757, 42px 36px 0 #f5c5a3, 48px 36px 0 #f5c5a3, 54px 36px 0 #ff4757,
+    36px 42px 0 #f5c5a3, 42px 42px 0 #ff4757, 48px 42px 0 #ff4757, 54px 42px 0 #f5c5a3,
+    30px 48px 0 #ddd, 36px 48px 0 #ddd, 42px 48px 0 #f5c5a3, 48px 48px 0 #f5c5a3, 54px 48px 0 #ddd, 60px 48px 0 #ddd,
+    30px 54px 0 #ccc, 36px 54px 0 #ddd, 42px 54px 0 #ddd, 48px 54px 0 #ddd, 54px 54px 0 #ddd, 60px 54px 0 #ccc,
+    36px 60px 0 #ccc, 42px 60px 0 #ddd, 48px 60px 0 #ddd, 54px 60px 0 #ccc,
+    42px 66px 0 #ccc, 48px 66px 0 #ccc,
+    24px 54px 0 #2c3e80, 66px 54px 0 #2c3e80,
+    18px 60px 0 #2c3e80, 24px 60px 0 #2c3e80, 30px 60px 0 #2c3e80, 60px 60px 0 #2c3e80, 66px 60px 0 #2c3e80, 72px 60px 0 #2c3e80,
+    18px 66px 0 #2c3e80, 24px 66px 0 #ffd700, 30px 66px 0 #2c3e80, 36px 66px 0 #2c3e80, 54px 66px 0 #2c3e80, 60px 66px 0 #2c3e80, 66px 66px 0 #ffd700, 72px 66px 0 #2c3e80,
+    18px 72px 0 #2c3e80, 24px 72px 0 #2c3e80, 30px 72px 0 #2c3e80, 36px 72px 0 #2c3e80, 42px 72px 0 #2c3e80, 48px 72px 0 #2c3e80, 54px 72px 0 #2c3e80, 60px 72px 0 #2c3e80, 66px 72px 0 #2c3e80, 72px 72px 0 #2c3e80,
+    12px 30px 0 #8B4513, 12px 36px 0 #8B4513, 12px 42px 0 #8B4513, 12px 48px 0 #8B4513, 12px 54px 0 #8B4513, 12px 60px 0 #8B4513, 12px 66px 0 #8B4513, 12px 72px 0 #8B4513,
+    12px 24px 0 #ff4757, 6px 24px 0 #ff6b6b, 18px 24px 0 #ff6b6b;
+}
+
+/* ── Player Normal ─── */
+.sprite-player-normal {
+  color: transparent;
+  box-shadow:
+    /* Hair */
+    30px 6px 0 #2c3e50, 36px 6px 0 #2c3e50, 42px 6px 0 #2c3e50, 48px 6px 0 #2c3e50,
+    24px 12px 0 #2c3e50, 30px 12px 0 #34495e, 36px 12px 0 #34495e, 42px 12px 0 #34495e, 48px 12px 0 #34495e, 54px 12px 0 #2c3e50,
+    /* Face */
+    30px 18px 0 #f5c5a3, 36px 18px 0 #f5c5a3, 42px 18px 0 #f5c5a3, 48px 18px 0 #f5c5a3,
+    30px 24px 0 #222, 36px 24px 0 #f5c5a3, 42px 24px 0 #f5c5a3, 48px 24px 0 #222,
+    30px 30px 0 #f5c5a3, 36px 30px 0 #f5c5a3, 42px 30px 0 #f5c5a3, 48px 30px 0 #f5c5a3,
+    36px 36px 0 #f5c5a3, 42px 36px 0 #f5c5a3,
+    /* Shirt */
+    24px 42px 0 #3498db, 30px 42px 0 #3498db, 36px 42px 0 #3498db, 42px 42px 0 #3498db, 48px 42px 0 #3498db, 54px 42px 0 #3498db,
+    18px 48px 0 #f5c5a3, 24px 48px 0 #3498db, 30px 48px 0 #3498db, 36px 48px 0 #2980b9, 42px 48px 0 #2980b9, 48px 48px 0 #3498db, 54px 48px 0 #3498db, 60px 48px 0 #f5c5a3,
+    18px 54px 0 #f5c5a3, 24px 54px 0 #3498db, 30px 54px 0 #3498db, 36px 54px 0 #3498db, 42px 54px 0 #3498db, 48px 54px 0 #3498db, 54px 54px 0 #3498db, 60px 54px 0 #f5c5a3,
+    /* Pants */
+    30px 60px 0 #2c3e50, 36px 60px 0 #2c3e50, 42px 60px 0 #2c3e50, 48px 60px 0 #2c3e50,
+    30px 66px 0 #2c3e50, 36px 66px 0 #34495e, 42px 66px 0 #34495e, 48px 66px 0 #2c3e50,
+    /* Shoes */
+    24px 72px 0 #8B4513, 30px 72px 0 #8B4513, 48px 72px 0 #8B4513, 54px 72px 0 #8B4513;
+}
+
+/* ── Player Worried ─── */
+.sprite-player-worried {
+  color: transparent;
+  box-shadow:
+    30px 6px 0 #2c3e50, 36px 6px 0 #2c3e50, 42px 6px 0 #2c3e50, 48px 6px 0 #2c3e50,
+    24px 12px 0 #2c3e50, 30px 12px 0 #34495e, 36px 12px 0 #34495e, 42px 12px 0 #34495e, 48px 12px 0 #34495e, 54px 12px 0 #2c3e50,
+    30px 18px 0 #f5c5a3, 36px 18px 0 #f5c5a3, 42px 18px 0 #f5c5a3, 48px 18px 0 #f5c5a3,
+    /* Worried eyes - wider */
+    30px 24px 0 #222, 36px 24px 0 #f5c5a3, 42px 24px 0 #f5c5a3, 48px 24px 0 #222,
+    24px 24px 0 #f5c5a3, 54px 24px 0 #f5c5a3,
+    /* Worried mouth */
+    30px 30px 0 #f5c5a3, 36px 30px 0 #f5c5a3, 42px 30px 0 #f5c5a3, 48px 30px 0 #f5c5a3,
+    36px 36px 0 #c0392b, 42px 36px 0 #c0392b,
+    /* Sweat drop */
+    60px 18px 0 #3498db, 60px 24px 0 #3498db,
+    /* Shirt */
+    24px 42px 0 #3498db, 30px 42px 0 #3498db, 36px 42px 0 #3498db, 42px 42px 0 #3498db, 48px 42px 0 #3498db, 54px 42px 0 #3498db,
+    18px 48px 0 #f5c5a3, 24px 48px 0 #3498db, 30px 48px 0 #3498db, 36px 48px 0 #2980b9, 42px 48px 0 #2980b9, 48px 48px 0 #3498db, 54px 48px 0 #3498db, 60px 48px 0 #f5c5a3,
+    18px 54px 0 #f5c5a3, 24px 54px 0 #3498db, 30px 54px 0 #3498db, 36px 54px 0 #3498db, 42px 54px 0 #3498db, 48px 54px 0 #3498db, 54px 54px 0 #3498db, 60px 54px 0 #f5c5a3,
+    30px 60px 0 #2c3e50, 36px 60px 0 #2c3e50, 42px 60px 0 #2c3e50, 48px 60px 0 #2c3e50,
+    30px 66px 0 #2c3e50, 36px 66px 0 #34495e, 42px 66px 0 #34495e, 48px 66px 0 #2c3e50,
+    24px 72px 0 #8B4513, 30px 72px 0 #8B4513, 48px 72px 0 #8B4513, 54px 72px 0 #8B4513;
+}
+
+/* ── Idle animation ─── */
+.sprite-idle {
+  animation: sprite-idle-bounce 2s ease-in-out infinite;
+}
+
+@keyframes sprite-idle-bounce {
+  0%, 100% { transform: scale(3) translateY(0); }
+  50% { transform: scale(3) translateY(-2px); }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merlin's Talk — Retro Pixel Experience</title>
+  <meta name="description" content="A retro pixel-art interactive disc experience with Merlin AI chat.">
+  <link rel="stylesheet" href="frontpagestyle.css">
+</head>
+
+<body>
+
+  <!-- Sunset Gradient Background -->
+  <div class="bg-sunset-synth"></div>
+
+  <!-- Twinkling Stars -->
+  <div class="fx-stars"></div>
+
+  <!-- Shooting Stars -->
+  <div class="fx-shooting-stars">
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+  </div>
+
+  <!-- Drifting Pixel Clouds -->
+  <div class="fx-clouds">
+    <div class="pixel-cloud"></div>
+    <div class="pixel-cloud cloud-sm"></div>
+    <div class="pixel-cloud"></div>
+    <div class="pixel-cloud cloud-sm"></div>
+    <div class="pixel-cloud cloud-sm"></div>
+  </div>
+
+  <!-- ===== PHASE 1: DVD STAGE ===== -->
+  <main class="dvd-stage" id="dvdStage">
+    <h1 class="typography-title">MERLIN'S WISDOM</h1>
+
+    <div class="dvd-container">
+      <!-- Hidden Disc (behind sleeve) -->
+      <div class="dvd-disc" id="dvdDisc" title="Play Disc"></div>
+
+      <!-- Sleeve on top -->
+      <div class="dvd-sleeve" id="dvdSleeve" title="Open Sleeve">
+        <div class="dvd-label">
+          Merlin's<br>TALK<br><br><span style="font-size:0.55rem;">v 1.0</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-pixel" id="btnPlayDemo">PLAY DEMO</button>
+  </main>
+
+  <!-- ===== PHASE 2: CRT TV MODAL ===== -->
+  <div class="crt-modal" id="crtModal">
+    <div class="crt-tv" id="crtTv">
+
+      <!-- Channel indicator -->
+      <div class="tv-channel">CH Merlin</div>
+
+      <!-- The Screen -->
+      <div class="crt-screen-container" id="crtScreen">
+
+                <!-- Embedded Vite App (Merlin's Quest) -->
+        <iframe src="http://localhost:5173" class="embedded-app" style="width: 100%; height: 100%; border: none; display: block; position: relative; z-index: 4; background: transparent;"></iframe>
+
+        <!-- CRT Overlays (keep existing) -->
+        <div class="fx-scanlines"></div>
+        <div class="fx-crt-flicker"></div>
+      </div>
+
+      <!-- Bezel elements -->
+      <span class="tv-brand">MERLIN</span>
+      <div class="tv-power-btn" id="btnPower" title="Shut Down"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sleeve = document.getElementById('dvdSleeve');
+      const disc = document.getElementById('dvdDisc');
+      const btnPlay = document.getElementById('btnPlayDemo');
+      const modal = document.getElementById('crtModal');
+      const tv = document.getElementById('crtTv');
+      const btnPwr = document.getElementById('btnPower');
+
+      const slideOut = () => {
+        disc.classList.add('slide-out');
+      };
+      sleeve.addEventListener('click', slideOut);
+      btnPlay.addEventListener('click', slideOut);
+
+      disc.addEventListener('click', () => {
+        if (!disc.classList.contains('slide-out')) return;
+        modal.classList.add('active');
+        tv.classList.remove('crt-shutdown');
+      });
+
+      btnPwr.addEventListener('click', () => {
+        tv.classList.add('crt-shutdown');
+        setTimeout(() => {
+          modal.classList.remove('active');
+          disc.classList.remove('slide-out');
+          tv.classList.remove('crt-shutdown');
+        }, 800);
+      });
+    });
+  </script>
+</body>
+
+</html>

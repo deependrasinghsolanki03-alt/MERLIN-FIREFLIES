@@ -1,0 +1,1334 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&family=VT323&display=swap');
+
+/* =============================================
+   RETRO PIXEL-ART DESIGN SYSTEM
+   ============================================= */
+
+/* --- 1. COLOR TOKENS --- */
+:root {
+  --c-sky-dark: #0b0620;
+  --c-violet: #2d0b6e;
+  --c-neon-violet: #7b2ff7;
+  --c-magenta: #e0007f;
+  --c-pink: #ff3cac;
+  --c-orange: #ff7000;
+  --c-light-orange: #ffaa44;
+  --c-peach: #ffcc99;
+  --c-cream: #fff5cc;
+
+  --c-white: #ffffff;
+  --c-navy: #060318;
+  --c-lavender: #c9b8f0;
+  --c-cyan: #00ffee;
+  --c-crt-green: #39ff14;
+
+  --pixel: 4px;
+  --shadow-pixel: 4px 4px 0 var(--c-navy);
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-vt: 'VT323', monospace;
+  --font-pixelify: 'Pixelify Sans', sans-serif;
+}
+
+/* --- 2. RESET & BASE --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html {
+  scroll-behavior: smooth
+}
+
+.crt-wrapper {
+  font-family: var(--font-pixel);
+  background: var(--c-sky-dark);
+  color: var(--c-white);
+  overflow-x: hidden;
+  image-rendering: pixelated;
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+
+/* =============================================
+   3. SUNSET PIXEL BACKGROUND
+   ============================================= */
+.bg-sunset-synth {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg,
+      var(--c-sky-dark) 0%,
+      #1a0845 12%,
+      var(--c-violet) 22%,
+      var(--c-neon-violet) 36%,
+      var(--c-magenta) 50%,
+      var(--c-pink) 58%,
+      var(--c-orange) 70%,
+      var(--c-light-orange) 82%,
+      var(--c-peach) 92%,
+      var(--c-cream) 100%);
+}
+
+/* Dithered pixel overlay */
+.bg-sunset-synth::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .2) 75%),
+    linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .2) 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+  pointer-events: none;
+  opacity: .3;
+}
+
+/* Grain texture */
+.bg-sunset-synth::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* =============================================
+   4. ANIMATED PIXEL STARS
+   ============================================= */
+.fx-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 5% 8%, #fff, transparent),
+    radial-gradient(1px 1px at 15% 15%, #fff, transparent),
+    radial-gradient(2px 2px at 25% 5%, var(--c-lavender), transparent),
+    radial-gradient(1px 1px at 35% 20%, #fff, transparent),
+    radial-gradient(2px 2px at 45% 3%, #fff, transparent),
+    radial-gradient(1px 1px at 55% 12%, var(--c-cyan), transparent),
+    radial-gradient(1px 1px at 65% 7%, #fff, transparent),
+    radial-gradient(2px 2px at 75% 18%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 4%, var(--c-lavender), transparent),
+    radial-gradient(1px 1px at 92% 14%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 30% 25%, var(--c-cyan), transparent),
+    radial-gradient(1px 1px at 50% 28%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 22%, #fff, transparent),
+    radial-gradient(2px 2px at 88% 32%, var(--c-lavender), transparent),
+    radial-gradient(1px 1px at 20% 2%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 10%, var(--c-cyan), transparent),
+    radial-gradient(2px 2px at 60% 1%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 9%, #fff, transparent),
+    radial-gradient(1px 1px at 95% 6%, var(--c-lavender), transparent);
+  background-size: 100vw 100vh;
+  animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+  0% {
+    opacity: .4
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: .5
+  }
+}
+
+/* =============================================
+   5. SHOOTING STARS
+   ============================================= */
+.fx-shooting-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden
+}
+
+.shooting-star {
+  position: absolute;
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--c-white), var(--c-cyan));
+  animation: shoot 6s linear infinite;
+  opacity: 0;
+}
+
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 6px;
+  height: 6px;
+  background: var(--c-white);
+  box-shadow: 0 0 6px 2px var(--c-cyan);
+}
+
+.shooting-star:nth-child(1) {
+  top: 8%;
+  left: -10%;
+  animation-delay: 0s;
+  animation-duration: 5s
+}
+
+.shooting-star:nth-child(2) {
+  top: 16%;
+  left: -10%;
+  animation-delay: 2.5s;
+  animation-duration: 6.5s
+}
+
+.shooting-star:nth-child(3) {
+  top: 5%;
+  left: -10%;
+  animation-delay: 5s;
+  animation-duration: 4.5s
+}
+
+.shooting-star:nth-child(4) {
+  top: 22%;
+  left: -10%;
+  animation-delay: 7s;
+  animation-duration: 5.5s
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(-25deg);
+    opacity: 0
+  }
+
+  5% {
+    opacity: 1
+  }
+
+  80% {
+    opacity: 1
+  }
+
+  100% {
+    transform: translateX(120vw) translateY(60px) rotate(-25deg);
+    opacity: 0
+  }
+}
+
+/* =============================================
+   6. PIXEL CLOUDS
+   ============================================= */
+.fx-clouds {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden
+}
+
+.pixel-cloud {
+  position: absolute;
+  image-rendering: pixelated;
+  animation: driftCloud linear infinite;
+  opacity: .85;
+  width: 80px;
+  height: 28px;
+  background: var(--c-lavender);
+  box-shadow:
+    8px -8px 0 var(--c-white),
+    16px -8px 0 var(--c-white),
+    24px -8px 0 var(--c-white),
+    8px -16px 0 var(--c-cream),
+    16px -16px 0 var(--c-cream),
+    -8px 0 0 var(--c-lavender),
+    88px 0 0 var(--c-lavender),
+    0 8px 0 rgba(100, 70, 150, .3),
+    8px 8px 0 rgba(100, 70, 150, .3);
+}
+
+.pixel-cloud.cloud-sm {
+  width: 48px;
+  height: 16px;
+  box-shadow:
+    8px -8px 0 var(--c-white),
+    16px -8px 0 var(--c-white),
+    0 8px 0 rgba(100, 70, 150, .2);
+}
+
+.pixel-cloud:nth-child(1) {
+  bottom: 32%;
+  left: -140px;
+  animation-duration: 42s;
+  animation-delay: 0s
+}
+
+.pixel-cloud:nth-child(2) {
+  bottom: 22%;
+  left: -140px;
+  animation-duration: 62s;
+  animation-delay: -5s;
+  opacity: .55
+}
+
+.pixel-cloud:nth-child(3) {
+  bottom: 40%;
+  left: -140px;
+  animation-duration: 52s;
+  animation-delay: -08s;
+  transform: scale(.7)
+}
+
+.pixel-cloud:nth-child(4) {
+  bottom: 16%;
+  left: -140px;
+  animation-duration: 72s;
+  animation-delay: -10s;
+  opacity: .45
+}
+
+.pixel-cloud:nth-child(5) {
+  bottom: 48%;
+  left: -140px;
+  animation-duration: 55s;
+  animation-delay: -5s;
+  opacity: .35;
+  transform: scale(.5)
+}
+
+@keyframes driftCloud {
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(calc(100vw + 200px))
+  }
+}
+
+/* =============================================
+   7. TYPOGRAPHY SYSTEM
+   ============================================= */
+.typography-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(1.4rem, 4vw, 3.2rem);
+  line-height: 1.6;
+  color: var(--c-cream);
+  text-shadow:
+    3px 3px 0 var(--c-magenta),
+    6px 6px 0 var(--c-navy),
+    9px 9px 0 rgba(0, 0, 0, .4);
+  letter-spacing: .06em;
+}
+
+.type-sub {
+  font-family: var(--font-vt);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  color: var(--c-lavender);
+  text-shadow: 2px 2px 0 var(--c-navy);
+}
+
+.type-label {
+  font-family: var(--font-pixel);
+  font-size: .65rem;
+  color: var(--c-cream);
+  text-shadow: 2px 2px 0 var(--c-navy);
+  line-height: 2;
+}
+
+.type-body {
+  font-family: var(--font-pixelify);
+  font-size: 1.1rem;
+  color: var(--c-lavender);
+  line-height: 1.8;
+}
+
+/* =============================================
+   8. REUSABLE UI COMPONENTS
+   ============================================= */
+
+/* --- Pixel Button --- */
+.btn-pixel {
+  font-family: var(--font-pixel);
+  font-size: .8rem;
+  display: inline-block;
+  background: var(--c-magenta);
+  color: var(--c-white);
+  border: var(--pixel) solid var(--c-navy);
+  padding: .9rem 1.6rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow:
+    inset -4px -4px 0 rgba(0, 0, 0, .3),
+    var(--shadow-pixel);
+  transition: transform .08s, box-shadow .08s, background .15s;
+  image-rendering: pixelated;
+  letter-spacing: .05em;
+  text-decoration: none;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.btn-pixel:hover {
+  background: var(--c-neon-violet);
+  box-shadow: inset -4px -4px 0 rgba(0, 0, 0, .3), 4px 4px 0 var(--c-cyan), 0 0 20px rgba(0, 255, 238, .3);
+  text-shadow: 0 0 8px var(--c-cyan);
+}
+
+.btn-pixel:active {
+  transform: translateY(4px) translateX(4px);
+  box-shadow: inset -2px -2px 0 rgba(0, 0, 0, .3), 0 0 0 transparent;
+}
+
+/* --- Retro Panel / Card --- */
+.panel-retro {
+  background: var(--c-cream);
+  color: var(--c-navy);
+  border: var(--pixel) solid var(--c-navy);
+  box-shadow: 6px 6px 0 var(--c-navy);
+  padding: 1.5rem;
+  font-family: var(--font-pixel);
+  font-size: .65rem;
+  line-height: 2;
+  image-rendering: pixelated;
+  position: relative;
+}
+
+.panel-retro::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 2px solid rgba(0, 0, 0, .08);
+  pointer-events: none;
+}
+
+/* --- Glow Utility --- */
+.fx-pixel-glow {
+  filter: drop-shadow(0 0 8px var(--c-cyan))
+}
+
+/* =============================================
+   9. LAYOUT UTILITIES
+   ============================================= */
+.dvd-stage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 5;
+  padding: 2rem;
+}
+
+/* =============================================
+   10. DVD COMPONENT â€” PHASE 1
+   ============================================= */
+.dvd-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+/* Rainbow CD Disc */
+.dvd-disc {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 284px;
+  height: 284px;
+  border-radius: 50%;
+  background: conic-gradient(#f53131e4, #ff4400, #ff7700cc, #ffbb00,
+      #00ff00ac, #00ffaa, #5ce4e4, #82baea,
+      #2e2eda, #7700ff, #ff0066, #ff0000);
+  border: 3x solid rgba(255, 255, 255, .55);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, .5),
+    inset 0 0 60px rgba(255, 255, 255, .12),
+    0 8px 20px rgba(0, 0, 0, .6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: transform 1.4s cubic-bezier(.22, 1, .36, 1);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Disc data tracks */
+.dvd-disc::before {
+  content: '';
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle, #999 20%, #555 60%, #333);
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, .45);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .9), 0 0 0 20px rgba(255, 255, 255, .04), 0 0 0 50px rgba(255, 255, 255, .03), 0 0 0 80px rgba(255, 255, 255, .02);
+  z-index: 2;
+}
+
+/* Disc shine */
+.dvd-disc::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(160deg, rgba(252, 250, 250, 0.925) 0%, transparent 50%, rgba(255, 255, 255, .08) 100%);
+  pointer-events: none;
+}
+
+.dvd-disc.slide-out {
+  transform: translateX(120%) rotate(420deg);
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.dvd-disc.slide-out:hover {
+  filter: brightness(1.3) drop-shadow(0 0 18px var(--c-cyan));
+}
+
+/* DVD Sleeve */
+.dvd-sleeve {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--c-navy);
+  border: 4px solid #1a0a3a;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, .7), inset 0 0 40px rgba(123, 47, 247, .15);
+  z-index: 2;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(224, 0, 127, .12) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(224, 0, 127, .12) 2px, transparent 2px);
+  background-size: 16px 16px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.dvd-sleeve:hover {
+  transform: scale(1.04);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, .8), 0 0 24px var(--c-neon-violet);
+}
+
+.dvd-label {
+  background: var(--c-magenta);
+  color: var(--c-cream);
+  border: 4px solid var(--c-cream);
+  padding: .75rem 1rem;
+  font-family: var(--font-pixel);
+  font-size: .7rem;
+  text-align: center;
+  line-height: 2;
+  transform: rotate(-4deg);
+  box-shadow: 4px 4px 0 var(--c-navy);
+}
+
+/* =============================================
+   11. CRT MODAL â€” PHASE 2
+   ============================================= */
+.crt-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 1, 15, .9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .45s ease;
+  backdrop-filter: blur(8px);
+}
+
+.crt-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* CRT Television */
+.crt-tv {
+  width: min(840px, 95vw);
+  height: min(640px, 90vh);
+  background: linear-gradient(180deg, #d4d4d4, #b8b8b8);
+  border-radius: 28px;
+  border: 6px solid #aaa;
+  box-shadow:
+    0 0 0 10px #b0b0b0,
+    0 0 0 14px #888,
+    0 30px 60px rgba(0, 0, 0, .9),
+    inset 0 6px 16px rgba(255, 255, 255, .5);
+  padding: 24px 24px 64px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: scale(.7);
+  transition: transform .5s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.crt-modal.active .crt-tv {
+  transform: scale(1);
+}
+
+/* Channel Indicator */
+.tv-channel {
+  position: absolute;
+  top: 18px;
+  right: 40px;
+  font-family: var(--font-vt);
+  font-size: 1.7rem;
+  color: #ff0033;
+  text-shadow: 0 0 12px #ff0033, 0 0 24px rgba(255, 0, 50, .5);
+  letter-spacing: .1em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Brand label */
+.tv-brand {
+  position: absolute;
+  bottom: 18px;
+  left: 32px;
+  font-family: var(--font-vt);
+  font-size: 1.1rem;
+  color: #666;
+  letter-spacing: .2em;
+}
+
+/* Green Power Button */
+.tv-power-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 32px;
+  width: 30px;
+  height: 30px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  border: 3px solid #555;
+  cursor: pointer;
+  transition: transform .1s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .5);
+  z-index: 10;
+}
+
+.tv-power-btn::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: var(--c-crt-green);
+  box-shadow: 0 0 10px var(--c-crt-green), 0 0 22px rgba(57, 255, 20, .5);
+  animation: powerPulse 2s ease-in-out infinite;
+}
+
+.tv-power-btn:hover {
+  transform: scale(1.15)
+}
+
+.tv-power-btn:active {
+  transform: scale(.88)
+}
+
+@keyframes powerPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px var(--c-crt-green), 0 0 22px rgba(57, 255, 20, .5)
+  }
+
+  50% {
+    box-shadow: 0 0 14px var(--c-crt-green), 0 0 32px rgba(57, 255, 20, .7)
+  }
+}
+
+/* CRT Screen */
+.crt-screen-container {
+  flex: 1;
+  position: relative;
+  background: #000;
+  border-radius: 16px/10px;
+  overflow: hidden;
+  border: 8px solid #666;
+  box-shadow:
+    inset 0 0 50px rgba(0, 0, 0, 1),
+    inset 0 0 100px rgba(0, 0, 0, .5),
+    0 0 30px rgba(0, 0, 0, .4);
+}
+
+.crt-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: .88;
+}
+
+/* Scanlines */
+.fx-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(to bottom,
+      transparent 0px, transparent 2px,
+      rgba(0, 0, 0, .3) 2px, rgba(0, 0, 0, .3) 4px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Flicker */
+.fx-crt-flicker {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, .025);
+  pointer-events: none;
+  z-index: 6;
+  animation: crtFlicker .12s infinite;
+}
+
+@keyframes crtFlicker {
+  0% {
+    opacity: .03
+  }
+
+  50% {
+    opacity: .07
+  }
+
+  100% {
+    opacity: .02
+  }
+}
+
+/* Glass curvature */
+.crt-screen-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px/10px;
+  box-shadow:
+    inset 0 0 70px rgba(0, 0, 0, .7),
+    inset 10px 0 25px rgba(0, 0, 0, .35),
+    inset -10px 0 25px rgba(0, 0, 0, .35);
+  pointer-events: none;
+  z-index: 7;
+}
+
+/* =============================================
+   12. CRT SHUTDOWN ANIMATION
+   ============================================= */
+.crt-shutdown .crt-screen-container {
+  animation: crtTurnOff .65s cubic-bezier(.23, 1, .32, 1) forwards;
+}
+
+.crt-shutdown .fx-scanlines,
+.crt-shutdown .fx-crt-flicker,
+.crt-shutdown .tv-channel {
+  animation: none;
+  display: none;
+}
+
+@keyframes crtTurnOff {
+  0% {
+    transform: scale(1, 1);
+    filter: brightness(1);
+    opacity: 1
+  }
+
+  35% {
+    transform: scale(1.02, .008);
+    filter: brightness(30);
+    opacity: 1
+  }
+
+  60% {
+    transform: scale(.5, .002);
+    filter: brightness(50);
+    opacity: 1
+  }
+
+  85% {
+    transform: scale(.05, .001);
+    filter: brightness(8);
+    opacity: .8
+  }
+
+  100% {
+    transform: scale(0, 0);
+    filter: brightness(0);
+    opacity: 0
+  }
+}
+
+/* =============================================
+   13. FLOAT & AMBIENT ANIMATIONS
+   ============================================= */
+@keyframes floatGentle {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-6px)
+  }
+}
+
+@keyframes floatSlow {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg)
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(1deg)
+  }
+}
+
+/* =============================================
+   14. MERLIN CHAT INTERFACE â€” SIDE LAYOUT
+   ============================================= */
+
+/* Main chat container inside CRT screen */
+.chat-interface {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: rgba(6, 3, 24, 0.95);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* --- LEFT SIDEBAR: Merlin Avatar --- */
+.merlin-sidebar {
+  width: 150px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px 8px;
+  border-right: 2px solid rgba(123, 47, 247, 0.3);
+  position: relative;
+  background: linear-gradient(180deg,
+      rgba(11, 6, 32, 0.8) 0%,
+      rgba(45, 11, 110, 0.4) 100%);
+}
+
+.merlin-avatar-wrap {
+  position: relative;
+  width: 110px;
+  height: 130px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.merlin-avatar {
+  width: 100px;
+  height: auto;
+  image-rendering: pixelated;
+  animation: merlinIdle 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+  z-index: 2;
+}
+
+/* Staff glow effect */
+.staff-glow {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  width: 14px;
+  height: 14px;
+  background: var(--c-cyan);
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px var(--c-cyan),
+    0 0 20px var(--c-cyan),
+    0 0 40px rgba(0, 255, 238, 0.4);
+  animation: staffGlow 2s ease-in-out infinite;
+  z-index: 3;
+}
+
+.merlin-status {
+  margin-top: 12px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--c-crt-green);
+  text-align: center;
+  text-shadow: 0 0 8px var(--c-crt-green);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* --- RIGHT MAIN: Chat Area --- */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+}
+
+/* =============================================
+   15. CHAT LOG
+   ============================================= */
+.chat-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-neon-violet) var(--c-navy);
+}
+
+.chat-log::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-log::-webkit-scrollbar-track {
+  background: var(--c-navy);
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+  background: var(--c-neon-violet);
+  border-radius: 3px;
+}
+
+/* --- Chat Messages --- */
+.chat-message {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: var(--font-pixelify);
+  font-size: 13px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: messagePop 0.3s ease-out;
+}
+
+@keyframes messagePop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* User message â€” right aligned, violet theme */
+.chat-message.user {
+  align-self: flex-end;
+  background: rgba(123, 47, 247, 0.25);
+  border: 1px solid var(--c-neon-violet);
+  color: var(--c-cream);
+  border-bottom-right-radius: 4px;
+}
+
+/* Merlin message â€” left aligned, cyan theme */
+.chat-message.merlin {
+  align-self: flex-start;
+  background: rgba(0, 255, 238, 0.1);
+  border: 1px solid rgba(0, 255, 238, 0.4);
+  color: var(--c-lavender);
+  border-bottom-left-radius: 4px;
+}
+
+/* Typing indicator cursor */
+.chat-message.merlin.typing::after {
+  content: 'â–‹';
+  animation: blink 1s infinite;
+  color: var(--c-cyan);
+  margin-left: 4px;
+}
+
+/* =============================================
+   16. SPEECH BUBBLE
+   ============================================= */
+.merlin-speech-bubble {
+  position: absolute;
+  bottom: 70px;
+  left: 10px;
+  background: var(--c-cream);
+  color: var(--c-navy);
+  padding: 8px 14px;
+  border: 3px solid var(--c-navy);
+  border-radius: 12px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 4px 4px 0 var(--c-navy);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 10;
+  line-height: 1.8;
+  transform: scale(0.9);
+}
+
+.merlin-speech-bubble.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.merlin-speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border: 5px solid transparent;
+  border-top-color: var(--c-navy);
+}
+
+/* =============================================
+   17. CHAT INPUT AREA
+   ============================================= */
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 2px solid rgba(123, 47, 247, 0.3);
+  background: rgba(6, 3, 24, 0.9);
+}
+
+.chat-input {
+  flex: 1;
+  background: var(--c-navy);
+  border: 2px solid rgba(123, 47, 247, 0.5);
+  color: var(--c-cream);
+  padding: 10px 14px;
+  font-family: var(--font-pixelify);
+  font-size: 14px;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.chat-input:focus {
+  border-color: var(--c-cyan);
+  box-shadow: 0 0 12px rgba(0, 255, 238, 0.2);
+}
+
+.chat-input::placeholder {
+  color: rgba(201, 184, 240, 0.4);
+}
+
+.chat-send-btn {
+  background: var(--c-magenta);
+  color: var(--c-white);
+  border: var(--pixel) solid var(--c-navy);
+  padding: 10px 18px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--c-navy);
+  transition: all 0.1s;
+  white-space: nowrap;
+}
+
+.chat-send-btn:hover {
+  background: var(--c-neon-violet);
+  box-shadow: 4px 4px 0 var(--c-cyan), 0 0 20px rgba(0, 255, 238, 0.3);
+  text-shadow: 0 0 6px var(--c-cyan);
+}
+
+.chat-send-btn:active {
+  transform: translateY(4px) translateX(4px);
+  box-shadow: 0 0 0 transparent;
+}
+
+/* =============================================
+   18. MERLIN AVATAR ANIMATIONS
+   ============================================= */
+
+@keyframes merlinIdle {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  25% {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  50% {
+    transform: translateY(-3px) scale(1);
+  }
+
+  75% {
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
+@keyframes staffGlow {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes statusPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Talking state */
+.merlin-avatar.talking {
+  animation: merlinTalk 0.4s ease-in-out infinite;
+}
+
+@keyframes merlinTalk {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: translateY(-4px);
+    filter: brightness(1.3) drop-shadow(0 0 10px var(--c-cyan));
+  }
+}
+
+/* Thinking state */
+.merlin-avatar.thinking {
+  animation: merlinThink 1.5s ease-in-out infinite;
+}
+
+@keyframes merlinThink {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-2deg) translateX(-3px);
+  }
+
+  75% {
+    transform: rotate(2deg) translateX(3px);
+  }
+}
+
+/* Casting state (important advice) */
+.merlin-avatar.casting {
+  animation: merlinCast 0.8s ease-out;
+}
+
+@keyframes merlinCast {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: scale(1.1) rotate(-3deg);
+    filter: brightness(1.5) drop-shadow(0 0 25px var(--c-cyan));
+  }
+
+  100% {
+    transform: scale(1);
+    filter: brightness(1.2);
+  }
+}
+
+/* =============================================
+   19. MAGIC PARTICLES
+   ============================================= */
+.fx-magic-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.magic-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--c-cyan);
+  box-shadow: 0 0 6px var(--c-cyan), 0 0 12px var(--c-cyan);
+  border-radius: 1px;
+  opacity: 0;
+  animation: particleFloat 2.5s linear infinite;
+}
+
+.magic-particle:nth-child(odd) {
+  width: 4px;
+  height: 4px;
+  background: var(--c-lavender);
+  box-shadow: 0 0 4px var(--c-lavender);
+}
+
+.magic-particle:nth-child(3n) {
+  width: 6px;
+  height: 6px;
+  background: var(--c-cream);
+  box-shadow: 0 0 8px var(--c-cream);
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(80px) translateX(0) scale(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  85% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-40px) translateX(25px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* =============================================
+   20. RESPONSIVE
+   ============================================= */
+@media(max-width:600px) {
+  .dvd-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .dvd-disc {
+    width: 204px;
+    height: 204px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .dvd-label {
+    font-size: .5rem;
+    padding: .5rem .6rem;
+  }
+
+  .btn-pixel {
+    font-size: .6rem;
+    padding: .7rem 1.2rem;
+  }
+
+  .typography-title {
+    text-shadow: 2px 2px 0 var(--c-magenta), 4px 4px 0 var(--c-navy);
+  }
+
+  .crt-tv {
+    border-radius: 15px;
+    padding: 16px 16px 50px 16px;
+  }
+
+  /* Mobile: stack sidebar on top */
+  .chat-interface {
+    flex-direction: column;
+  }
+
+  .merlin-sidebar {
+    width: 100%;
+    height: 80px;
+    min-width: auto;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 2px solid rgba(123, 47, 247, 0.3);
+    padding: 8px 12px;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .merlin-avatar-wrap {
+    width: 60px;
+    height: 60px;
+  }
+
+  .merlin-avatar {
+    width: 50px;
+  }
+
+  .staff-glow {
+    width: 10px;
+    height: 10px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .merlin-status {
+    margin-top: 0;
+    font-size: 7px;
+  }
+
+  .fx-magic-particles {
+    display: none;
+  }
+
+  .merlin-speech-bubble {
+    left: 80px;
+    bottom: 60px;
+    font-size: 8px;
+    max-width: 160px;
+  }
+
+  .chat-input-area {
+    padding: 8px 12px;
+  }
+
+  .chat-input {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .chat-send-btn {
+    padding: 8px 12px;
+    font-size: 8px;
+  }
+}
+
