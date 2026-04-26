@@ -95,6 +95,7 @@ export default function QuestPage() {
 
   const handleTopicSelect = async (selectedTopic) => {
     setTopic(selectedTopic);
+
     setGameState('loading');
 
     try {

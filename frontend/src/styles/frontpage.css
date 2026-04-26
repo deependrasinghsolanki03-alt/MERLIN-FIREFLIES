@@ -151,7 +151,7 @@ html {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .shooting-star {
@@ -159,8 +159,9 @@ html {
   width: 90px;
   height: 2px;
   background: linear-gradient(to right, transparent, var(--c-white), var(--c-cyan));
-  animation: shoot 6s linear infinite;
+  animation: shoot 5s linear infinite;
   opacity: 0;
+  transform-origin: right center;
 }
 
 .shooting-star::after {
@@ -171,54 +172,92 @@ html {
   width: 6px;
   height: 6px;
   background: var(--c-white);
+  border-radius: 50%;
   box-shadow: 0 0 6px 2px var(--c-cyan);
+  animation: starBurst 5s linear infinite;
 }
 
 .shooting-star:nth-child(1) {
-  top: 8%;
-  left: -10%;
-  animation-delay: 0s;
-  animation-duration: 5s
+  top: -10%; left: 30%;
+  animation-delay: 0s; animation-duration: 5s;
+}
+.shooting-star:nth-child(1)::after {
+  animation-delay: 0s; animation-duration: 5s;
 }
 
 .shooting-star:nth-child(2) {
-  top: 16%;
-  left: -10%;
-  animation-delay: 2.5s;
-  animation-duration: 6.5s
+  top: -10%; left: 60%;
+  animation-delay: 2.5s; animation-duration: 4.5s;
+}
+.shooting-star:nth-child(2)::after {
+  animation-delay: 2.5s; animation-duration: 4.5s;
 }
 
 .shooting-star:nth-child(3) {
-  top: 5%;
-  left: -10%;
-  animation-delay: 5s;
-  animation-duration: 4.5s
+  top: -5%; left: 10%;
+  animation-delay: 5s; animation-duration: 6s;
+}
+.shooting-star:nth-child(3)::after {
+  animation-delay: 5s; animation-duration: 6s;
 }
 
 .shooting-star:nth-child(4) {
-  top: 22%;
-  left: -10%;
-  animation-delay: 7s;
-  animation-duration: 5.5s
+  top: -15%; left: 80%;
+  animation-delay: 1.5s; animation-duration: 5.5s;
+}
+.shooting-star:nth-child(4)::after {
+  animation-delay: 1.5s; animation-duration: 5.5s;
 }
 
 @keyframes shoot {
   0% {
-    transform: translateX(0) translateY(0) rotate(-25deg);
-    opacity: 0
+    transform: translateX(0) translateY(0) rotate(55deg);
+    opacity: 0;
   }
-
-  5% {
-    opacity: 1
+  10% {
+    opacity: 1;
   }
-
-  80% {
-    opacity: 1
+  65% {
+    opacity: 1;
+    transform: translateX(35vw) translateY(60vh) rotate(55deg);
   }
-
+  70% {
+    opacity: 0;
+    transform: translateX(40vw) translateY(70vh) rotate(55deg);
+  }
   100% {
-    transform: translateX(120vw) translateY(60px) rotate(-25deg);
-    opacity: 0
+    opacity: 0;
+    transform: translateX(40vw) translateY(70vh) rotate(55deg);
+  }
+}
+
+@keyframes starBurst {
+  0%, 60% {
+    box-shadow: 0 0 6px 2px var(--c-cyan);
+    background: var(--c-white);
+    transform: scale(1);
+  }
+  65% {
+    box-shadow: 
+      12px -12px 0 1px var(--c-white),
+      -12px 12px 0 1px var(--c-cyan),
+      15px 15px 0 1px var(--c-white),
+      -15px -15px 0 1px var(--c-cyan),
+      0 20px 0 1px var(--c-white),
+      20px 0 0 1px var(--c-cyan);
+    background: transparent;
+    transform: scale(0.8);
+  }
+  70%, 100% {
+    box-shadow: 
+      25px -25px 0 0 transparent,
+      -25px 25px 0 0 transparent,
+      35px 35px 0 0 transparent,
+      -35px -35px 0 0 transparent,
+      0 45px 0 0 transparent,
+      45px 0 0 0 transparent;
+    background: transparent;
+    transform: scale(0.2);
   }
 }
 
@@ -325,6 +364,18 @@ html {
     6px 6px 0 var(--c-navy),
     9px 9px 0 rgba(0, 0, 0, .4);
   letter-spacing: .06em;
+  display: flex;
+  justify-content: center;
+}
+
+.typography-title span {
+  display: inline-block;
+  animation: waveText 2.5s ease-in-out infinite;
+}
+
+@keyframes waveText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
 .type-sub {

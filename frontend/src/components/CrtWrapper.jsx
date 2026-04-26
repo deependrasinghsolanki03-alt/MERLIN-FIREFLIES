@@ -52,7 +52,13 @@ export default function CrtWrapper({ children }) {
 
       {/* ===== PHASE 1: DVD STAGE ===== */}
       <main className="dvd-stage" id="dvdStage">
-        <h1 className="typography-title">MERLIN'S WISDOM</h1>
+        <h1 className="typography-title">
+          {"MERLIN'S WISDOM".split('').map((char, index) => (
+            <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+              {char === ' ' ? '\u00A0' : char}
+            </span>
+          ))}
+        </h1>
 
         <div className="dvd-container">
           {/* Hidden Disc (behind sleeve) */}
@@ -90,7 +96,7 @@ export default function CrtWrapper({ children }) {
         <div className={`crt-tv ${isShuttingDown ? 'crt-shutdown' : ''}`} id="crtTv">
 
           {/* Channel indicator */}
-          <div className="tv-channel">CH Merlin</div>
+          <div className="tv-channel">CH FireFlies</div>
 
           {/* The Screen */}
           <div className="crt-screen-container" id="crtScreen">
